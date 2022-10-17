@@ -1,35 +1,24 @@
-const color = document.getElementById("color");
 const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
+
 canvas.width = 800;
 canvas.height = 800;
-let isPainting = false;
 
-function onMove(event) {
-    if (isPainting) {
-        ctx.lineTo(event.offsetX, event.offsetY);
-        ctx.stroke();
-        return;
-    }
-    ctx.moveTo(event.offsetX, event.offsetY);
+// ctx.moveTo(25,25);
+// ctx.lineTo(100,100);
+// ctx.strokeStyle = 'red';
+// ctx.stroke();
+
+// ctx.beginPath();
+// ctx.moveTo(100,100);
+// ctx.lineTo(100,50);
+// ctx.strokeStyle = 'blue';
+// ctx.stroke();
+
+function onDraw(event){
+    // console.log(event);
+    ctx.lineTo(event.offsetX,event.offsetY);
+    ctx.stroke();
 }
 
-function startPainting() {
-    isPainting = true;
-}
-
-function cancelPainting() {
-    isPainting = false;
-    ctx.beginPath();
-}
-
-function onColorChange(event) {
-    ctx.strokeStyle = event.target.value;
-    ctx.fillStyle = event.target.value;
-}
-
-canvas.addEventListener("mousemove", onMove);
-canvas.addEventListener("mousedown", startPainting);
-canvas.addEventListener("mouseup", cancelPainting);
-canvas.addEventListener("mouseleave", cancelPainting);
-color.addEventListener("change", onColorChange)
+canvas.addEventListener('mousemove', onDraw);
