@@ -15,10 +15,27 @@ canvas.height = 800;
 // ctx.strokeStyle = 'blue';
 // ctx.stroke();
 
+let clicked = false;
+
 function onDraw(event){
     // console.log(event);
-    ctx.lineTo(event.offsetX,event.offsetY);
-    ctx.stroke();
+    // ctx.moveTo(event.offsetX, event.offsetY);
+    if(clicked){
+        
+        ctx.lineTo(event.offsetX,event.offsetY);
+        ctx.stroke();
+    }
+    
+}
+
+function onMousedown(event){
+    clicked = true;
+}
+
+function onMouseup(event) {
+    clicked =false;
 }
 
 canvas.addEventListener('mousemove', onDraw);
+canvas.addEventListener('mousedown', onMousedown);
+canvas.addEventListener('mouseup', onMouseup);
