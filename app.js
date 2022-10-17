@@ -25,6 +25,9 @@ function onDraw(event){
         ctx.lineTo(event.offsetX,event.offsetY);
         ctx.stroke();
     }
+    else {
+        ctx.moveTo(event.offsetX, event.offsetY);
+    }
     
 }
 
