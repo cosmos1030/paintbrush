@@ -1,4 +1,7 @@
 const range = document.querySelector('#range');
+const color = document.querySelector('#color');
+const download = document.querySelector('#download');
+
 const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
 
@@ -42,12 +45,24 @@ function onMouseup(event) {
 }
 
 function onChangethickness(event) {
-    console.log(range.value);
+    // console.log(range.value);
     ctx.lineWidth = range.value;
     ctx.beginPath();
+}
+
+function onChangecolor(event) {
+    ctx.strokeStyle = color.value;
+    ctx.beginPath();
+}
+
+function onDownload(event) {
+    // console.log(canvas.toDataURL());
+    event.target.href = canvas.toDataURL();
 }
 
 canvas.addEventListener('mousemove', onDraw);
 canvas.addEventListener('mousedown', onMousedown);
 canvas.addEventListener('mouseup', onMouseup);
 range.addEventListener('change', onChangethickness);
+color.addEventListener('change', onChangecolor);
+download.addEventListener('click', onDownload);
