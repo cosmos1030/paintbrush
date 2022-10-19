@@ -46,13 +46,13 @@ function onMouseup(event) {
 
 function onChangethickness(event) {
     // console.log(range.value);
-    ctx.lineWidth = range.value;
     ctx.beginPath();
+    ctx.lineWidth = range.value;
 }
 
 function onChangecolor(event) {
-    ctx.strokeStyle = color.value;
     ctx.beginPath();
+    ctx.strokeStyle = color.value;
 }
 
 function onDownload(event) {
