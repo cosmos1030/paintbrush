@@ -1,5 +1,6 @@
 const range = document.querySelector('#range');
 const color = document.querySelector('#color');
+const eraser = document.querySelector('#eraser');
 const download = document.querySelector('#download');
 
 const canvas = document.querySelector('canvas');
@@ -55,6 +56,18 @@ function onChangecolor(event) {
     ctx.strokeStyle = color.value;
 }
 
+function onCheckeraser(event) {
+    console.log(eraser.checked);
+    if (eraser.checked){
+        ctx.beginPath();
+        ctx.strokeStyle = 'white';
+        ctx.lineWidth = range.value;
+    } else{
+        onChangecolor();
+        onChangethickness();
+    }
+}
+
 function onDownload(event) {
     // console.log(canvas.toDataURL());
     event.target.href = canvas.toDataURL();
@@ -65,4 +78,5 @@ canvas.addEventListener('mousedown', onMousedown);
 canvas.addEventListener('mouseup', onMouseup);
 range.addEventListener('change', onChangethickness);
 color.addEventListener('change', onChangecolor);
+eraser.addEventListener('change', onCheckeraser);
 download.addEventListener('click', onDownload);
